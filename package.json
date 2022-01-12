@@ -1,0 +1,25 @@
+{
+  "name": "node-samp-starter",
+  "version": "1.0.0",
+  "description": "TypeScript starter for NodeSamp.",
+  "repository": "github:dev2alert/node-samp-starter",
+  "author": "dev2alert",
+  "main": "./dist/index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production nodesamp .",
+    "compile": "tsc",
+    "dev": "cross-env NODE_ENV=development tsc-watch --onSuccess \"nodesamp .\""
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "typescript": "^4.5.4",
+    "tsc-watch": "^4.6.0",
+    "@types/node": "^16.4.13"
+  },
+  "dependencies": {
+    "@sa-mp/cli": "1.x",
+    "@sa-mp/amx": "1.x",
+    "@sa-mp/core": "1.x",
+    "@sa-mp/decorators": "1.x"
+  }
+}
