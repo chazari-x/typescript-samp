@@ -4,7 +4,7 @@ import {ModePlayer} from "./mode.pctx";
 
 @Context()
 export class VehPlayer extends Player.Context {
-    @Import()
+    @Import(() => ModePlayer)
     public readonly mode: ModePlayer;
 
     @Key(Keys.NO)
