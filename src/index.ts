@@ -4,7 +4,7 @@ import {ModePlayer} from "./mode.pctx";
 
 export function bootstrap(): void {
     const gamemodeFactory = GameMode.Factory.create(Mode);
-    Player.Factory.create(ModePlayer, {gamemodeFactory, commands: true, keys: true});
+    Player.Factory.create(ModePlayer, {gamemodeFactory, commands: true, keys: true, dialogs: true});
 }
 
 bootstrap();
