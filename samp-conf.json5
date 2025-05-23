@@ -1,8 +1,30 @@
 {
-    hostName: "Node.js server",
-    webUrl: "github.com/dev2alert/node-samp",
-    gameModeText: "NodeSamp Starter",
+    hostName: "Creative Zone Online",
+    webUrl: "czo.ooo",
+    gameModeText: "Sandbox",
     port: 7777,
     maxPlayers: 1000,
-    rconPassword: "qwerty123"
+    rconPassword: "qwerty123",
+    hybridmode: 1,
+    filterscripts: ["TDE"],
+    plugins: [
+        "@sa-mp/crashdetect",
+        "@sa-mp/fcnpc",
+        "@sa-mp/streamer",
+        {
+            platform: "win32",
+            path: "./bscrashfix.dll"
+        },
+        {
+            platform: "win32",
+            path: "./MSGSeparator.dll"
+        },
+        {
+            platform: "win32",
+            path: "./sscanf.dll"
+        },
+    ],
+    lanmode: 1,
+    maxNpc: 100,
+    pluginsPath: "./plugins",
 }

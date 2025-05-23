@@ -11,15 +11,23 @@
     "dev": "cross-env NODE_ENV=development tsc-watch --onSuccess \"nodesamp .\""
   },
   "devDependencies": {
+    "@types/node": "^16.4.13",
+    "@types/pg": "^8.11.11",
     "cross-env": "^7.0.3",
-    "typescript": "^4.5.4",
     "tsc-watch": "^4.6.0",
-    "@types/node": "^16.4.13"
+    "typescript": "^4.5.4"
   },
   "dependencies": {
-    "@sa-mp/cli": "1.x",
+    "@infernus/core": "^0.11.9",
+    "@infernus/gps": "^0.0.1",
+    "@infernus/mapandreas": "^0.2.1",
     "@sa-mp/amx": "1.x",
+    "@sa-mp/cli": "1.x",
     "@sa-mp/core": "1.x",
-    "@sa-mp/decorators": "1.x"
+    "@sa-mp/crashdetect": "^1.0.0",
+    "@sa-mp/decorators": "1.x",
+    "@sa-mp/fcnpc": "^1.0.0",
+    "@sa-mp/streamer": "^1.0.0",
+    "pg": "^8.14.1"
   }
 }
