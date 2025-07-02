@@ -1,4 +1,4 @@
-import {ObjectOptions, Player, SampObject} from "@sa-mp/core";
+import {EditObjectResponse, ObjectOptions, Player, Position, SampObject} from "@sa-mp/core";
 import {Alt, Command, Context, Import, ParamInt} from "@sa-mp/decorators";
 import {ModePlayer} from "./mode.pctx";
 
@@ -6,6 +6,18 @@ import {ModePlayer} from "./mode.pctx";
 export class ObjectPctx extends Player.Context {
     @Import(() => ModePlayer)
     public readonly mode: ModePlayer;
+
+    @Command("premod(dd)", "Создать объект")
+    @Alt("premod")
+    public premod(@ParamInt("model") model: number): void {
+        if (!this.mode.authorized) return
+
+        try {
+        } catch (e) {
+            this.send("{ff5500}[ERROR]: {ffffff}Ошибка при создании объекта.");
+            console.error(e);
+        }
+    }
 
     @Command("oa(dd)", "Создать объект")
     @Alt("oa", "oadd")
@@ -83,6 +95,10 @@ export class ObjectPctx extends Player.Context {
             this.send("{ff5500}[ERROR]: {ffffff}Ошибка при редактировании объекта.");
             console.error(e);
         }
+    }
+
+    public onEditObject(isPlayerObject: boolean, object: SampObject, response: EditObjectResponse, offset: Position, rot: Position): any {
+        console.log(JSON.stringify({object, offset, rot}))
     }
 
     @Command("oi(nfo)", "Информация об объекте")

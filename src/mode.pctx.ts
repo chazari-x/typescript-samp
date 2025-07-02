@@ -8,17 +8,24 @@ import {
     ShowDialogOptions,
     TextDraw
 } from "@sa-mp/core";
-import {Context} from "@sa-mp/decorators";
+import {Context, Import} from "@sa-mp/decorators";
 import {VehPctx} from "./veh.pctx";
 import PostgresClient, {User, World} from "./db/client";
 import {WeaponPctx} from "./weapon.pctx";
 import {ObjectPctx} from "./object.pctx";
 import {WorldPctx} from "./world.pctx";
 import {AnimPctx} from "./anims.pctx";
+import {CopchasePctx} from "./copchase.pctx";
+import {UtilsPctx} from "./utils.pctx";
 
 
-@Context([VehPctx, WeaponPctx, ObjectPctx, WorldPctx, AnimPctx])
+@Context([VehPctx, WeaponPctx, ObjectPctx, WorldPctx, AnimPctx, CopchasePctx, UtilsPctx])
 export class ModePlayer extends Player.Context {
+    @Import(() => CopchasePctx)
+    public readonly copchase: CopchasePctx;
+    @Import(() => UtilsPctx)
+    public readonly utils: UtilsPctx;
+
     public passwordAttempts: number = 0;
     public db = PostgresClient.getInstance();
     public db_user: User | null = null
@@ -38,7 +45,7 @@ export class ModePlayer extends Player.Context {
     });
 
     stopAnimTextDraw = TextDraw.create({
-        text: "Press F to stop animation",
+        text: "Press SPACE to stop animation",
         x: 320,
         y: 430,
         color: 0xffffffAA,
@@ -49,6 +56,7 @@ export class ModePlayer extends Player.Context {
     });
 
     public onConnect(): boolean {
+        this.stuntBonus = false
         this.db.getUser(this.name)
             .then((user) => {
                 this.db_user = user
@@ -57,6 +65,8 @@ export class ModePlayer extends Player.Context {
             })
             .catch((e) => {
                 console.error(e)
+                this.send(`{ff0000}[ERROR]: {ffffff}Ошибка при получении пользователя: ${e.message}`);
+                this.kick()
             })
         this.welcomeTextDraw.show(this);
         this.spectating = true;

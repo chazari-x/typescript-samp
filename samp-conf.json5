@@ -4,7 +4,7 @@
     gameModeText: "Sandbox",
     port: 7777,
     maxPlayers: 1000,
-    rconPassword: "qwerty123",
+    rconPassword: "go3j439jg93ja9vmvap934",
     hybridmode: 1,
     filterscripts: ["TDE"],
     plugins: [
@@ -16,12 +16,16 @@
             path: "./bscrashfix.dll"
         },
         {
+            platform: "linux",
+            path: "./bscrashfix.so"
+        },
+        {
             platform: "win32",
             path: "./MSGSeparator.dll"
         },
         {
-            platform: "win32",
-            path: "./sscanf.dll"
+            platform: "linux",
+            path: "./MSGSeparator.so"
         },
     ],
     lanmode: 1,

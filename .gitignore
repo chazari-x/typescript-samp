@@ -2,3 +2,5 @@
 /dist
 .idea
 package-lock.json
+.env
+docker-compose.yml

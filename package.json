@@ -28,6 +28,7 @@
     "@sa-mp/decorators": "1.x",
     "@sa-mp/fcnpc": "^1.0.0",
     "@sa-mp/streamer": "^1.0.0",
+    "dotenv": "^16.5.0",
     "pg": "^8.14.1"
   }
 }
